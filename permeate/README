@@ -1,0 +1,14 @@
+
+=== Makefile targets:
+
+permeate:
+	compiles the permeate binary from source; requires libipq.
+
+=== Executables:
+
+antijuggler.sh 
+	receiver side of permeate channel.
+
+juggler.sh
+	sender side of permeate channel
+
