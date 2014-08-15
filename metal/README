@@ -1,0 +1,40 @@
+METAL is a POC shim library for memory encryption.  It is given
+``As-is'' with no warranty whatsoever.  There is still a lot of work to
+be done on this project.  Input is appreciated and can be sent to me at:
+
+    jamie.levy@gmail.com
+
+
+There is a make file.
+
+make all 
+    creates the libmetal.so* library
+
+make install
+    installs the library under /usr/lib by default.  one must be root
+    in order to install in /usr/lib.  this can be changed to some other
+    preference of course.
+
+
+In order to use METAL with legacy applications you can use the following
+command:
+
+    $ LD_PRELOAD="/usr/lib/libmetal.so" [application_cmd]
+
+where you will replace [application_cmd] with the program you intend to
+run.
+
+You can also compile applications with the -lmetal flag after it is
+installed, or you can use the library without installing in /usr/lib 
+by using the following commands:
+
+    $ LD_LIBRARY_PATH=`pwd`:${LD_LIBRARY_PATH}
+    $ export LD_LIBRARY_PATH
+
+
+Then to compile [assuming you messed with the path, as above]:
+
+    $ cc -fPIC -c main.c
+    $ cc main.o -L. -lmetal -o test -pthread
+
+TODO: make the pthread mutex inline.
